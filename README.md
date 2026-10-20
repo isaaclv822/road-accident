@@ -4,7 +4,7 @@ Analyse des accidents corporels de la circulation routière en France en 2024 : 
 
 👉 **[Voir le dashboard en ligne](https://road-accident-france-2024.streamlit.app/)**
 
-![Aperçu du dashboard](docs/aperçu.png)
+![Aperçu du dashboard](docs/apercu.png)
 
 ## Les données
 
@@ -21,14 +21,14 @@ Les deux fichiers sont liés par l'identifiant d'accident `Num_Acc` (relation un
 
 ## Démarche
 
-1. **Exploration** (`notebooks/01_eda.ipynb`) : structure, types, valeurs manquantes, clé de liaison.
-2. **Nettoyage et chargement — ETL** (`notebooks/02_cleaning.ipynb`) :
+1. **Exploration** (`notebook/01_eda.ipynb`) : structure, types, valeurs manquantes, clé de liaison.
+2. **Nettoyage et chargement — ETL** (`notebook/02_cleaning.ipynb`) :
    - conversion des coordonnées GPS (virgule décimale → point) ;
    - extraction de l'heure, construction de la date et du jour de la semaine ;
    - traduction des codes en libellés lisibles, à partir de la documentation officielle ;
    - les codes `-1` (« non renseigné ») deviennent de vraies valeurs manquantes, pour ne pas fausser les calculs ;
    - chargement dans une base **SQLite** (2 tables : `accidents`, `usagers`).
-3. **Analyse en SQL** (`notebooks/03_analyse.ipynb`) : `GROUP BY`, `CASE WHEN`, jointure entre les deux tables.
+3. **Analyse en SQL** (`notebook/03_analyse.ipynb`) : `GROUP BY`, `CASE WHEN`, jointure entre les deux tables.
 4. **Dashboard** (`app.py`) : Streamlit + Plotly, avec un filtre par département.
 
 ## Résultats clés
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Pour reconstruire la base : télécharger les deux CSV dans `data/raw/`, puis exécuter `notebooks/02_cleaning.ipynb`.
+Pour reconstruire la base : télécharger les deux CSV dans `data/raw/`, puis exécuter `notebook/02_cleaning.ipynb`.
 
 ## Compétences mobilisées
 
