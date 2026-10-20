@@ -2,7 +2,7 @@
 
 Analyse des accidents corporels de la circulation routière en France en 2024 : **quand**, **où**, **qui**, et surtout **qu'est-ce qui rend un accident plus grave ?**
 
-👉 **[Voir le dashboard en ligne](LIEN_A_AJOUTER)**
+👉 **[Voir le dashboard en ligne](https://road-accident-france-2024.streamlit.app/)**
 
 ![Aperçu du dashboard](docs/aperçu.png)
 
