@@ -1,0 +1,112 @@
+[
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien de personnes ont été impliquées dans un accident ?",
+    "sql": "SELECT COUNT(*) FROM usagers"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien de personnes ont été tuées au total ?",
+    "sql": "SELECT COUNT(*) FROM usagers WHERE gravite = 'Tué'"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien de piétons ont été tués ?",
+    "sql": "SELECT COUNT(*) FROM usagers WHERE categorie = 'Piéton' AND gravite = 'Tué'"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien de femmes ont été tuées ?",
+    "sql": "SELECT COUNT(*) FROM usagers WHERE sexe_lib = 'Femme' AND gravite = 'Tué'"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien d'accidents ont eu lieu un samedi ?",
+    "sql": "SELECT COUNT(*) FROM accidents WHERE jour_semaine = 'Samedi'"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien d'accidents ont eu lieu en juillet ?",
+    "sql": "SELECT COUNT(*) FROM accidents WHERE mois = 7"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien d'accidents ont eu lieu avant 6 heures du matin ?",
+    "sql": "SELECT COUNT(*) FROM accidents WHERE heure < 6"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien d'accidents ont eu lieu par forte pluie ?",
+    "sql": "SELECT COUNT(*) FROM accidents WHERE meteo = 'Pluie forte'"
+  },
+  {
+    "categorie": "Jointure",
+    "question": "Combien de personnes ont été tuées à Paris ?",
+    "sql": "SELECT COUNT(*) FROM usagers AS u JOIN accidents AS a ON u.Num_Acc = a.Num_Acc WHERE u.gravite = 'Tué' AND a.dep = '75'"
+  },
+  {
+    "categorie": "Jointure",
+    "question": "Combien de piétons ont été tués la nuit ?",
+    "sql": "SELECT COUNT(*) FROM usagers AS u JOIN accidents AS a ON u.Num_Acc = a.Num_Acc WHERE u.categorie = 'Piéton' AND u.gravite = 'Tué' AND a.periode = 'Nuit'"
+  },
+  {
+    "categorie": "Jointure",
+    "question": "Combien de personnes ont été tuées hors agglomération par temps de pluie légère ?",
+    "sql": "SELECT COUNT(*) FROM usagers AS u JOIN accidents AS a ON u.Num_Acc = a.Num_Acc WHERE u.gravite = 'Tué' AND a.agglomeration = 'Hors agglomération' AND a.meteo = 'Pluie légère'"
+  },
+  {
+    "categorie": "Jointure",
+    "question": "Combien de personnes ont été tuées dans les Bouches-du-Rhône ?",
+    "sql": "SELECT COUNT(*) FROM usagers AS u JOIN accidents AS a ON u.Num_Acc = a.Num_Acc WHERE u.gravite = 'Tué' AND a.dep = '13'"
+  },
+  {
+    "categorie": "Comptage simple",
+    "question": "Combien d'accidents ont eu lieu en Gironde ?",
+    "sql": "SELECT COUNT(*) FROM accidents WHERE dep = '33'"
+  },
+  {
+    "categorie": "Regroupement",
+    "question": "Quel est le nombre d'accidents pour chaque période de la journée ?",
+    "sql": "SELECT periode, COUNT(*) FROM accidents GROUP BY periode"
+  },
+  {
+    "categorie": "Regroupement",
+    "question": "Quels sont les 3 départements avec le plus d'accidents ?",
+    "sql": "SELECT dep FROM accidents GROUP BY dep ORDER BY COUNT(*) DESC LIMIT 3"
+  },
+  {
+    "categorie": "Regroupement",
+    "question": "Quelle heure de la journée compte le plus d'accidents ?",
+    "sql": "SELECT heure FROM accidents GROUP BY heure ORDER BY COUNT(*) DESC LIMIT 1"
+  },
+  {
+    "categorie": "Regroupement",
+    "question": "Combien y a-t-il eu de tués pour chaque catégorie d'usager ?",
+    "sql": "SELECT categorie, COUNT(*) FROM usagers WHERE gravite = 'Tué' GROUP BY categorie"
+  },
+  {
+    "categorie": "Pourcentage",
+    "question": "Quelle est la part de tués parmi les personnes impliquées hors agglomération ?",
+    "sql": "SELECT ROUND(100.0 * SUM(CASE WHEN u.gravite = 'Tué' THEN 1 ELSE 0 END) / COUNT(*), 2) FROM usagers AS u JOIN accidents AS a ON u.Num_Acc = a.Num_Acc WHERE a.agglomeration = 'Hors agglomération'"
+  },
+  {
+    "categorie": "Pourcentage",
+    "question": "Quelle est la part de tués chez les personnes de 65 ans et plus ?",
+    "sql": "SELECT ROUND(100.0 * SUM(CASE WHEN gravite = 'Tué' THEN 1 ELSE 0 END) / COUNT(*), 2) FROM usagers WHERE age >= 65"
+  },
+  {
+    "categorie": "Pourcentage",
+    "question": "Quel pourcentage des accidents a lieu la nuit ?",
+    "sql": "SELECT ROUND(100.0 * SUM(CASE WHEN periode = 'Nuit' THEN 1 ELSE 0 END) / COUNT(*), 2) FROM accidents"
+  },
+  {
+    "categorie": "Moyenne",
+    "question": "Quel est l'âge moyen des personnes impliquées dans un accident ?",
+    "sql": "SELECT AVG(age) FROM usagers"
+  },
+  {
+    "categorie": "Moyenne",
+    "question": "Quel est l'âge moyen des piétons tués ?",
+    "sql": "SELECT AVG(age) FROM usagers WHERE categorie = 'Piéton' AND gravite = 'Tué'"
+  }
+]

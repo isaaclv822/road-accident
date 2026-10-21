@@ -2,3 +2,4 @@ pandas>=2.2
 plotly>=5.24
 streamlit>=1.46
 jupyter>=1.1
+ollama>=0.4
