@@ -128,7 +128,7 @@ Une requête valide mais fausse ne produit aucune erreur : c'est une **erreur si
 │   └── jeu_de_test.json    # 22 questions + requêtes de référence
 ├── notebook/
 │   ├── 01_eda.ipynb … 03_analyse.ipynb           # partie 1 : analyse de données
-│   └── 04_decouverte_llm.ipynb … 07_evaluation.ipynb   # partie 2 : assistant IA
+│   └── 04_llm_discovery.ipynb … 07_evaluation.ipynb   # partie 2 : assistant IA
 └── docs/                   # captures d'écran
 ```
 
