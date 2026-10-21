@@ -59,8 +59,8 @@ L'assistant tourne **en local** avec [Ollama](https://ollama.com) et le modèle 
 
 ### Démonstration
 
-<!-- Remplacer cette ligne par la vidéo (glisser-déposer le fichier dans l'éditeur GitHub) -->
-VIDEO_A_AJOUTER
+https://github.com/user-attachments/assets/631ec59f-c93b-4c76-86d6-6c0debe5feb9
+
 
 ### Deux fonctionnalités
 
